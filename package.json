@@ -4,10 +4,11 @@
   "description": "A distribution fitting library for JS",
   "main": "lib/main.js",
   "scripts": {
+      "test": "grunt mochaTest"
   },
   "keywords": [
     "statistics",
-    "distribution fitting",
+    "distribution fitting"
   ],
   "author": "Daniel Levin <daniellevin2607@gmail.com>",
   "license": "MIT",
