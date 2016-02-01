@@ -4,7 +4,7 @@
   "description": "A distribution fitting library for JS",
   "main": "lib/main.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter spec",
   },
   "keywords": [
     "statistics",
@@ -12,5 +12,9 @@
     "fitting"
   ],
   "author": "Daniel Levin <daniellevin2607@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+      "chai": "^3.4.1",
+      "mocha": "^2.3.3"
+  }
 }
