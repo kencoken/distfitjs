@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: DiscreteDistribution</title>
+    <title>JSDoc: Source: poisson.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,129 +17,32 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: DiscreteDistribution</h1>
+    <h1 class="page-title">Source: poisson.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
     
-        <h2>DiscreteDistribution</h2>
-        
-    
-</header>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var core = require("./core");
 
-<article>
-    <div class="container-overview">
-    
-        
-
-    
-
-    <h4 class="name" id="DiscreteDistribution"><span class="type-signature"></span>new DiscreteDistribution<span class="signature">()</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-<div class="description">
-    The abstract base class for discrete distributions
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="core.js.html">core.js</a>, <a href="core.js.html#line45">line 45</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    </div>
-
-    
-
-    
-
-    
-
-     
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+/**
+ * The constructor for a Poisson distribution object
+ * @constructor
+ * @param {float=} lambda - Rate parameter
+ */
+var Poisson = exports.Poisson = function(lambda) {
+  this.lambda = lambda;
+  this.mu = lambda;
+  this.variance = lambda;
+};
+Poisson.prototype = Object.create(core.DiscreteDistribution.prototype);
+Poisson.prototype.constructor = Poisson;
+</code></pre>
+        </article>
+    </section>
 
 
 
