@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Normal</title>
+    <title>JSDoc: Class: Exponential</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Normal</h1>
+    <h1 class="page-title">Class: Exponential</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>Normal</h2>
+        <h2>Exponential</h2>
         
     
 </header>
@@ -40,14 +40,14 @@
 
     
 
-    <h4 class="name" id="Normal"><span class="type-signature"></span>new Normal<span class="signature">(mu<span class="signature-attributes">opt</span>, sigma2<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Exponential"><span class="type-signature"></span>new Exponential<span class="signature">(lambda<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    The constructor for a Normal Distribution object
+    The constructor for a Exponential distribution object
 </div>
 
 
@@ -85,7 +85,7 @@
 
         <tr>
             
-                <td class="name"><code>mu</code></td>
+                <td class="name"><code>lambda</code></td>
             
 
             <td class="type">
@@ -111,40 +111,7 @@
 
             
 
-            <td class="description last">Mean</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>sigma2</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">float</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">Variance</td>
+            <td class="description last">Rate (inverse scale) parameter</td>
         </tr>
 
     
@@ -185,7 +152,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="normal.js.html">normal.js</a>, <a href="normal.js.html#line8">line 8</a>
+        <a href="exponential.js.html">exponential.js</a>, <a href="exponential.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -234,14 +201,14 @@
 
     
 
-    <h4 class="name" id=".computeMu"><span class="type-signature">(static) </span>computeMu<span class="signature">(data)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".computeLambdaMinMSE"><span class="type-signature">(static) </span>computeLambdaMinMSE<span class="signature">(data)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Helper function to compute parameter mu for the Normal
+    Compute the Mean Square Error-minimising estimator of lambda
 </div>
 
 
@@ -293,7 +260,7 @@
 
             
 
-            <td class="description last">the data from which to compute mu</td>
+            <td class="description last">The data from which to compute lambda</td>
         </tr>
 
     
@@ -334,7 +301,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="normal.js.html">normal.js</a>, <a href="normal.js.html#line22">line 22</a>
+        <a href="exponential.js.html">exponential.js</a>, <a href="exponential.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -365,14 +332,14 @@
 
     
 
-    <h4 class="name" id=".computeSigma2"><span class="type-signature">(static) </span>computeSigma2<span class="signature">(data, mu<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".computeLambdaUMVUE"><span class="type-signature">(static) </span>computeLambdaUMVUE<span class="signature">(data)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    Helper function to compute parameter sigma2 for the Normal
+    Compute the Uniformly Minimum Variance Unbiased Estimator of lambda
 </div>
 
 
@@ -395,8 +362,6 @@
 
         <th>Type</th>
 
-        
-        <th>Attributes</th>
         
 
         
@@ -423,51 +388,10 @@
             </td>
 
             
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last">the data from which to compute sigma2</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>mu</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">float</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">The mean</td>
+            <td class="description last">The data from which to compute the UMVUE lambda estimator</td>
         </tr>
 
     
@@ -508,7 +432,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="normal.js.html">normal.js</a>, <a href="normal.js.html#line32">line 32</a>
+        <a href="exponential.js.html">exponential.js</a>, <a href="exponential.js.html#line24">line 24</a>
     </li></ul></dd>
     
 
@@ -639,7 +563,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="normal.js.html">normal.js</a>, <a href="normal.js.html#line50">line 50</a>
+        <a href="exponential.js.html">exponential.js</a>, <a href="exponential.js.html#line48">line 48</a>
     </li></ul></dd>
     
 
