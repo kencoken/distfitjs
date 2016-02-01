@@ -32,5 +32,11 @@ describe("Exponential Distribution Parameter Estimation", function() {
       var tol = Math.pow(10, -8);
       expect(lambdaMSE).to.be.within(lambdaMSE_indirect - tol, lambdaMSE_indirect + tol);
     });
+
+    it("should automatically default to the UMVUE estimator", function() {
+      var exp = new distfit.Exponential();
+      exp.fitData(testCase.data);
+      expect(exp.lambda).to.equal(lambdaUMVUE);
+    });
   });
 });
