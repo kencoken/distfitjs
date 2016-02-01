@@ -27,3 +27,22 @@ describe("Normal Distribution Parameter Estimator", function() {
     });
   });
 });
+
+describe("Poisson Distribution Parameter Estimator", function() {
+  var tests = [
+    {
+      data: [1, 2, 1, 1, 0, 1],
+      lambda: 1,
+    },
+    {
+      data: [1, 4, 5, 5, 6, 5, 4, 4],
+      lambda: 4.25,
+    }
+  ];
+  tests.forEach(function(test) {
+    it("must correctly compute the parameter lambda of the sample " + test.data, function() {
+      var lambda = distfit.Poisson.computeLambda(test.data);
+      expect(lambda).to.equal(test.lambda);
+    });
+  });
+});
