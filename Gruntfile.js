@@ -16,5 +16,5 @@ module.exports = function(grunt) {
     }
   });
   
-  grunt.registerTask("default", ["mochaTest", "jsdoc"]);
+  grunt.registerTask("default", ["mochaTest"]);
 };
