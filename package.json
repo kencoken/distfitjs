@@ -1,0 +1,16 @@
+{
+  "name": "distfitjs",
+  "version": "0.0.1",
+  "description": "A distribution fitting library for JS",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "keywords": [
+    "statistics",
+    "distribution",
+    "fitting"
+  ],
+  "author": "Daniel Levin <daniellevin2607@gmail.com>",
+  "license": "MIT"
+}
