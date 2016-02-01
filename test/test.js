@@ -44,5 +44,11 @@ describe("Poisson Distribution Parameter Estimator", function() {
       var lambda = distfit.Poisson.computeLambda(test.data);
       expect(lambda).to.equal(test.lambda);
     });
+    it("must correctly parametrise a new Poisson distribution for sample " + test.data, function() {
+        var pd = new distfit.Poisson(test.lambda);
+        var fittedPoisson = new distfit.Poisson();
+        fittedPoisson.fitData(test.data);
+        expect(pd).to.deep.equal(fittedPoisson);
+    });
   });
 });
