@@ -13,10 +13,11 @@
   ],
   "author": "Daniel Levin <daniellevin2607@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "chai": "^3.4.1",
+    "grunt": "^0.4.5",
+    "grunt-jsdoc": "^1.1.0",
     "mocha": "^2.3.3"
   }
 }
