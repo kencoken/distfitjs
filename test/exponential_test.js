@@ -9,7 +9,7 @@ describe("Exponential Distribution Parameter Estimation", function() {
       data: [15, 44, 14, 7, 6, 1, 20, 14, 5, 61, 23, 73, 12, 49, 7],
       lambdaUMVUE: 0.039886039886039885,
       lambdaMSE: 0.03703703703703704
-    }
+    },
   ];
   tests.forEach(function(testCase) {
     var lambdaUMVUE = distfit.Exponential.computeLambdaUMVUE(testCase.data);
