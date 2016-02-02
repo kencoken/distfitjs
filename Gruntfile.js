@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     jsdoc: {
       dist: {
-        src: ['lib/*.js', 'test/*.js'],
+        src: ['lib/*.js', 'test/*.js', 'README.md'],
         options: {
           destination: 'doc'
         }
