@@ -40,3 +40,27 @@ describe("Exponential Distribution Parameter Estimation", function() {
     });
   });
 });
+
+describe("Exponential Distribution Functions Sanity Check", function() {
+  var lambdas = [0.5, 1, 1.5, 10000];
+  lambdas.forEach(function(lambda) {
+    var exp = new distfit.Exponential(lambda);
+    describe("For lambda: " + lambda, function() {
+
+      it("PDF should be decreasing", function() {
+        var somewhereElse = 10 * Math.random();
+        expect(exp.pdf(0)).to.be.above(exp.pdf(somewhereElse));
+      });
+
+      it("CDF should be identically zero at origin", function() {
+        expect(exp.cdf(0)).to.be.zero;
+      });
+
+      it("CDF should be increasing", function() {
+        var somewhereElse = 10 * Math.random();
+        expect(exp.cdf(0)).to.be.below(exp.cdf(somewhereElse));
+      });
+
+    });
+  });
+});
