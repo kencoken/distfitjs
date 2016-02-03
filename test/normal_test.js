@@ -27,3 +27,39 @@ describe("Normal Distribution Parameter Estimator", function() {
     });
   });
 });
+
+describe("Normal Distribution Function Test", function() {
+  var tests = [
+    {
+      mu: 100,
+      sigma2: 225
+    },
+    {
+      mu: 0,
+      sigma2: 1
+    },
+    {
+      mu: -2078,
+      sigma2: 1000
+    }
+  ];
+  tests.forEach(function(test) {
+    var nd = new distfit.Normal(test.mu, test.sigma2);
+    describe("For mu = " + test.mu + ", sigma2 = " + test.sigma2, function() {
+      it("PDF should be symmetric about the origin", function() {
+        // To test this, pick two random points symmetric about mu and check
+        // that the pdf value at these two points is identical.
+        var randomPoint = Math.random() * Math.sqrt(test.sigma2);
+        var left = nd.pdf(test.mu - randomPoint);
+        var right = nd.pdf(test.mu + randomPoint);
+        expect(right-left).to.be.below(Math.pow(10, -10));
+      });
+
+      it("CDF should be around 0.5 at the origin", function() {
+        var cdfOrigin = nd.cdf(test.mu);
+        var diff = Math.abs(0.5 - cdfOrigin);
+        expect(diff).to.be.below(Math.pow(10, -9));
+      });
+    });
+  });
+});
