@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: poisson.js</title>
+    <title>JSDoc: Source: kde.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: poisson.js</h1>
+    <h1 class="page-title">Source: kde.js</h1>
 
     
 
@@ -28,66 +28,51 @@
         <article>
             <pre class="prettyprint source linenums"><code>var core = require("./core");
 
-/**
- * The constructor for a Poisson distribution object
- * @constructor
- * @augments DiscreteDistribution
- * @param {float=} lambda - Rate parameter
- */
-var Poisson = exports.Poisson = function(lambda) {
-  this.lambda = lambda;
-  this.mean = lambda;
-  this.variance = lambda;
+var Kernel = exports.Kernel = function() {
 };
-Poisson.prototype = Object.create(core.DiscreteDistribution.prototype);
-Poisson.prototype.constructor = Poisson;
+
+Kernel.Gaussian = exports.Kernel.Gaussian = function(u) {
+  return (1/Math.sqrt(2*Math.PI)) * Math.exp((-1/2) * Math.pow(u,2));
+};
+
+var KDEDist = exports.KDEDist = function(kernel, data) {
+  this.kernel = kernel;
+  this.data = data;
+  this.fitData(data);
+};
+KDEDist.prototype = Object.create(core.Distribution.prototype);
+KDEDist.prototype.constructor = KDEDist;
 
 /**
- * Helper function to compute parameter lambda for Poisson distribution
+ * Bandwidth estimation using Silverman's rule of thumb
  * @function
- * @param {array} data - The data from which to compute lambda
  */
-Poisson.computeLambda = exports.Poisson.computeLambda = function(data) {
-  // The MLE estimator used here is of minimum variance and unbiased.
-  var lambda = core.arithMean(data);
-  return lambda;
-};
-
-
-/**
- * @inheritdoc
- */
-Poisson.prototype.isUniquelyDetermined = function() {
-  return this.lambda !== undefined;
+KDEDist.silverman = function(sigmahat, n) {
+  return Math.pow(4 * Math.pow(sigmahat, 5) / (3 * n), (1/5));
 };
 
 /**
  * @inheritdoc
  */
-Poisson.prototype.fitData = function(data) {
-  core.DiscreteDistribution.call(this);
-  var lambda = Poisson.computeLambda(data);
-  this.lambda = this.mean = this.variance = lambda;
+KDEDist.prototype.fitData = function(data) {
+  this.n = data.length;
+  this.data = data;
+  this.sigmahat = core.sampleStdDev(data);
+  this.bw = KDEDist.silverman(this.sigmahat, this.n);
 };
 
 /**
  * @inheritdoc
  */
-Poisson.prototype.pmf = function(x) {
-  return Math.pow(this.lambda, x) * Math.exp(-this.lambda) / core.factorial(x);
-};
-
-/**
- * @inheritdoc
- */
-Poisson.prototype.cdf = function(x) {
-  var total = 0;
-  var k;
-  for (k = 0; k &lt;= x; k++) {
-      var probMass_k = this.pmf(k);
-      total += probMass_k;
-  }
-  return total;
+KDEDist.prototype.pdf = function(x) {
+  var sum = 0;
+  var kernel = this.kernel;
+  var bw = this.bw;
+  this.data.forEach(function(xi) {
+    var pt = (x-xi)/bw;
+    sum += kernel(pt);
+  });
+  return Math.pow(this.n * this.bw, -1) * sum;
 };
 </code></pre>
         </article>
