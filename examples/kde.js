@@ -235,7 +235,6 @@ var x = [
 ,112.658036301206
 ,80.6254937106122
 ,86.242172317524
-,146.123224792565
 ,57.904514754798
 ,98.2843450315502
 ,70.0927518842085
@@ -684,7 +683,6 @@ var x = [
 ,51.3957411502317
 ,50.673126593669
 ,57.6540775636407
-,16.6428595011264
 ,53.7196451156296
 ,77.8512399235911
 ,56.3529259782875
@@ -1002,8 +1000,12 @@ var x = [
 ,39.9585168100164
 ,62.6904107858255
 ];
-x.sort();
 
+function sortNumber(a,b) {
+    return a - b;
+}
+
+x = x.sort(sortNumber);
 
 var kde = new distfit.KDE.KDEDist(distfit.KDE.Kernel.Gaussian, x);
 console.log(kde);
@@ -1017,7 +1019,9 @@ var data = [
   {
       x: x,
       y: y,
-      mode: "markers"
+      mode: "lines",
+      line: {shape: 'linear'},
+      type: 'scatter'
   }
 ];
 
