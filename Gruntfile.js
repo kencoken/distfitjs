@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jsdoc');
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.initConfig({
     jsdoc: {
@@ -13,7 +14,14 @@ module.exports = function(grunt) {
     },
     mochaTest: {
       src: ['test/*.js']
-    }
+    },
+    uglify: {
+      my_target: {
+        files: {
+          "distfit.min.js": ["lib/*.js"]
+        }
+      }
+    },
   });
   
   grunt.registerTask("default", ["mochaTest"]);
