@@ -9,6 +9,7 @@ Distfitjs is lightweight and has no dependencies.
 See the `examples/` directory.
 
 Given some data:
+
 ![histogram](hist.png)
 
 Compute a (Gaussian) kernel density estimate:
