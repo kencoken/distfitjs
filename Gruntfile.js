@@ -15,13 +15,6 @@ module.exports = function(grunt) {
     mochaTest: {
       src: ['test/*.js']
     },
-    uglify: {
-      my_target: {
-        files: {
-          "distfit.min.js": ["lib/*.js"]
-        }
-      }
-    },
   });
   
   grunt.registerTask("default", ["mochaTest"]);
