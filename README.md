@@ -16,6 +16,11 @@ Compute a (Gaussian) kernel density estimate:
 
 ![pdf](kde.png)
 
+## Installation
+`
+npm install distfitjs
+`
+
 ## Basic Usage
 Distfit provides several distribution classes.
 They provide basic statistical functionality like PDFs/PMFs/CDFs.
