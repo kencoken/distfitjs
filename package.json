@@ -1,5 +1,6 @@
 {
   "name": "distfitjs",
+  "url": "https://github.com/daniel-levin/distfitjs",
   "version": "0.0.1",
   "description": "A distribution fitting library for JS",
   "main": "lib/main.js",
