@@ -3,7 +3,7 @@
   "url": "https://github.com/daniel-levin/distfitjs",
   "version": "0.0.1",
   "description": "A distribution fitting library for JS",
-  "main": "lib/main.js",
+  "main": "lib/distfit.js",
   "scripts": {
     "test": "grunt mochaTest",
     "build-browser": "browserify -r ./lib/distfit.js:distfit -o distfit.min.js"
